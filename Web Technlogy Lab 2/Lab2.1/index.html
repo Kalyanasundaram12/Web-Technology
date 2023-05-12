@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURVEY FORM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 id="title">SURVEY FORM</h2>
+    <form>
+        <h2>Customer Name</h2>
+		<div class="row">
+			<div class="col">
+				<input type="text" id="first-name" placeholder=" ">
+                <h5>Enter your First name</h5>
+			</div>
+			<div class="col">
+				<input type="text" id="last-name" placeholder=" " >
+                <h5>Enter your Last name</h5>
+			</div>
+		</div>
+        <h2>Address</h2><br>
+        <input type="text" id="street-address" placeholder=" " style="width: 1270px;" >
+        <h5>Street Address</h5><br>
+        <input type="text" id="street-address line 2" placeholder=" " style="width: 1270px;" >
+        <h5>Street Address Line 2</h5>
+        <div class="row">
+			<div class="col">
+				<input type="text" id="city" placeholder=" " >
+                <h5>City</h5>
+			</div>
+			<div class="col">
+				<input type="text" id="state" placeholder=" " >
+                <h5>state</h5>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col">
+				<input type="text" id="state" placeholder=" " >
+                <h5>Zip</h5>
+			</div>
+            <div class="col">
+				<select id="country">
+                    <option>Afghanistan</option>
+                    <option>India</option>
+                    <option>USA</option>
+                </select>
+                <h5>select country</h5>
+			</div>
+		</div>
+        <h2>Contact</h2>
+        <div class="row">
+            <div class="col">
+                <input type="tel" id="phone" placeholder="">
+                <h5>Phone</h5>
+            </div>
+            <div class="col">
+                <input type="email" id="email" placeholder="aaa@gmail.com" >
+                <h5>Email</h5>
+            </div>
+        </div>
+        <h2>Personal Details</h2><br>
+        <div class="gender">
+            <input type="radio" id="male" placeholder="">
+            <label for="male" style="color: white;">male</label><br>
+            <input type="radio" id="female" placeholder="">
+            <label for="female" style="color: white;">female</label>
+        </div>
+            <fieldset style="background-color: pink;">
+                <legend style="color: white; font-size: medium;">Ratings</legend>
+            <label style="color: white;">Rating 1:</label>
+            <input type = "radio"> <label style="color: white;">Bad</label>
+            <input type = "radio"> <label style="color: white;">Good</label>
+            <input type = "radio"> <label style="color: white;">Excellent</label> <br><br><br>
+
+            <label style="color: white;">Rating 2:</label>
+            <input type = "radio"> <label style="color: white;">Bad</label>
+            <input type = "radio"> <label style="color: white;">Good</label>
+            <input type = "radio"> <label style="color: white;">Excellent</label>
+            </fieldset>
+            <center><input type = "submit" id="submit" value="Submit"></center>
+
+
+
+    </form>
+    
+</body>
+</html>

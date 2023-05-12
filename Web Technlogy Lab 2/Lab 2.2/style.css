@@ -1,0 +1,21 @@
+body{
+    background-color: lightcoral;
+}
+.one{
+    
+background-color: green;
+}
+#two{
+    color: yellow;
+}
+.three{
+    
+    background-color: red;
+}
+#four{
+    color: white;
+}
+.five{
+    margin-left: 20px;
+    margin-right: 20px;
+}
