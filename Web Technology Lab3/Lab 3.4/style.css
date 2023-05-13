@@ -1,0 +1,22 @@
+body{
+    margin: auto;
+}
+header{
+    font-size: x-large ;
+    font-weight: 100;
+}
+footer{
+    font-size: x-large ;
+    font-weight: 100;
+}
+.one{
+    display: flex;
+    justify-content: center;
+    height: 666px;
+    flex-direction: row;
+    flex-grow: inherit;
+}
+div{
+    font-size: x-large ;
+    font-weight: 100;
+}
