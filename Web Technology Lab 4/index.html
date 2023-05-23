@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Technology</title>
+  <style>
+    @import "compass/css3";
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #container {
+      width: 100%;
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 5px;
+      animation: bounceIn 8s infinite;
+    }
+    
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    
+    .button:hover {
+      transform: scale(1.1);
+    }
+    
+    .slider {
+      width: 200px;
+      height: 10px;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .slider:hover .knob {
+      transform: scale(1.2) rotate(360deg);
+    }
+    
+    .slider .knob {
+      width: 20px;
+      height: 20px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      left: 0;
+      transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .accordion {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    
+    .accordion .item {
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+    
+    .accordion .item:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(76, 175, 80, 0.2);
+      transform: skewX(-20deg);
+      transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .accordion .item:hover:before {
+      transform: skewX(0deg);
+    }
+    
+    .accordion .content {
+      display: none;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+    
+    .accordion .item:hover {
+      background-color: #f9f9f9;
+    }
+    
+    .accordion .item:hover .content {
+      display: block;
+      transform: translateY(0);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .clock {
+      position: relative;
+      height: 150px;
+      width: 150px;
+      margin: 0 auto;
+    }
+    
+    .clock .top {
+      position: absolute;
+      width: 3px;
+      height: 8px;
+      background: #262626;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+    
+    .clock .right {
+      position: absolute;
+      width: 8px;
+      height: 3px;
+      background: #262626;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto 0;
+    }
+    
+    .clock .bottom {
+      position: absolute;
+      width: 3px;
+      height: 8px;
+      background: #262626;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+    }
+    
+    .clock .left {
+      position: absolute;
+      width: 8px;
+      height: 3px;
+      background: #262626;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto 0;
+    }
+    
+    .clock .center {
+      height: 6px;
+      width: 6px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: #262626;
+      border-radius: 100%;
+    }
+    
+    .clock .shadow {
+      height: 150px;
+      width: 150px;
+      position: absolute;
+      left: 35px;
+      top: 35px;
+      transform: rotate(135deg);
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+    }
+    
+    .clock .hour {
+      width: 3px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      animation: time 3600s infinite linear;
+      &:before {
+        position: absolute;
+        content: "";
+        background: #262626;
+        height: 60px;
+        width: 3px;
+        top: 30px;
+      }
+    }
+    
+    .clock .minute {
+      width: 1px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      animation: time 60s infinite linear;
+      &:before {
+        position: absolute;
+        content: "";
+        background: #262626;
+        height: 80px;
+        width: 1px;
+        top: 20px;
+      }
+    }
+    
+    .clock .second {
+      width: 2px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      animation: time 60s infinite linear;
+      &:before {
+        position: absolute;
+        content: "";
+        background: #fd1111;
+        height: 90px;
+        width: 2px;
+        top: 15px;
+      }
+    }
+    
+    @keyframes time {
+      0% {
+        transform: rotateZ(0deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="header">
+      <h1>Welcome to Web Technology</h1>
+      <p style="font-weight: bold;font-size: larger;">This website is designed by Kalyanasundaram V</p>
+      <div class="clock">
+        <div class="top"></div>
+        <div class="right"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="shadow"></div>
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+      </div>
+    </div>
+    <div class="button-container">
+      <a href="https://github.com/Kalyanasundaram12" class="button">Github</a>
+    </div>
+    <div class="slider">
+      <div class="knob"></div>
+    </div>
+    <div class="accordion">
+      <div class="item">
+        <h3>Student Name</h3>
+        <div class="content">
+          <p>Kalyanasundaram V</p>
+        </div>
+      </div>
+      <div class="item">
+        <h3>Student Reg Number</h3>
+        <div class="content">
+          <p>21MIS1028</p>
+        </div>
+      </div>
+      <div class="item">
+        <h3>Handling Faculty</h3>
+        <div class="content">
+          <p>Prethija G</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
