@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .container {
+          max-width: 500px;
+          margin: 0 auto;
+          padding: 20px;
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          background: linear-gradient(to bottom right, #8E44AD, #673AB7);
+      }
+  
+      .container input[type="text"],
+      .container input[type="email"],
+      .container input[type="password"],
+      .container input[type="tel"],
+      .container select,
+      .container textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 6px;
+          margin-bottom: 16px;
+          resize: vertical;
+          background-color: #fff;
+      }
+  
+      .container input[type="submit"],
+      .container input[type="radio"] {
+          background-color: orangered;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+  
+      .container input[type="submit"]:hover {
+          background-color: darkorange;
+      }
+      label{
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: medium;
+        font-weight: bolder;
+      }
+  
+      @media (max-width: 600px) {
+          .container {
+              max-width: 100%;
+              padding: 10px;
+          }
+      }
+  </style>
+  
+    <title>Personal Details</title>
+</head>
+<body>
+    <div class="container">
+        <form name="clientform" onsubmit="return validateform()" action="thanks.html">
+      
+          <label for="fname" name="firstname" >First Name</label>
+          <input type="text" id="fname" name="firstname" placeholder="Your name"><br>
+          <label for="lname" name="lastname">Last Name</label>
+          <input type="text" id="lname" name="lastname" placeholder="Your last name"><br>
+          <label for="email" name="Email">Email</label>
+          <input type="email"id="email" name="Email" placeholder="Your Email"><br>
+          <label for="pass" name="password">Password</label>
+          <input type="password"id="pass" name="password" placeholder="Your Password"><br>
+          <label for="tel" name="Tell">Phone Number</label>
+          <input type="tel"id="tel" name="tell" placeholder="Your Phonenumber"><br>
+          <label for="radio">Gender</label><br>
+          <label for="radio">Male</label>
+          <input type="radio"id="radio" value="Male">
+          <label for="radio">Female</label>
+          <input type="radio"id="radio" value="Female"><br>
+          <label for="country" name="country">Country</label>
+          <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="india">India</option>
+            <option value="usa">USA</option>
+          </select><br>
+          <label for="subject" name="subject">Subject</label>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height: 100px" ></textarea><br>
+      
+          <input type="submit" value="Submit">
+      
+        </form>
+</div>
+<script>
+ function validateform() {
+    var firstname = document.forms["clientform"]["firstname"].value;
+    var lastname = document.forms["clientform"]["lastname"].value;
+    var Email = document.forms["clientform"]["Email"].value;
+    var password = document.forms["clientform"]["password"].value;
+    var tell = document.forms["clientform"]["tell"].value;
+    var country = document.forms["clientform"]["country"].value;
+    var subject = document.forms["clientform"]["subject"].value;
+
+    if (
+        firstname == "" ||
+        lastname == "" ||
+        Email == "" ||
+        password == "" ||
+        tell == "" ||
+        country == "" ||
+        subject == "" 
+    ) {
+        alert("All input fields are required");
+        return false;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(firstname)) {
+        alert("First Name should only consists of alphabets and whitespaces");
+        return false;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(lastname)) {
+        alert("Last Name should only consists of alphabets and whitespaces");
+        return false;
+    }
+    if (!/^[a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(Email)) {
+        alert("Email ID is not valid.");
+        return false;
+    }
+    if (password.length < 8 || password.length > 20) {
+        alert("password length should be between 8 and 20");
+        return false;
+    }
+    if (!/^\d{10}$/.test(tell)) {
+        alert("Mobile number should have 10 digits");
+        return false;
+    }
+    else{
+    return true;
+    }
+}
+</script>
+</body>
+</html>
