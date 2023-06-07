@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add to Cart Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      background-color: black;
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .item {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+    }
+
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .item-details {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .item-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .quantity button {
+      width: 30px;
+      height: 30px;
+      background-color: #ccc;
+      border: none;
+      cursor: pointer;
+    }
+
+    .quantity input {
+      width: 50px;
+      height: 30px;
+      padding: 0 10px;
+      text-align: center;
+      border: none;
+    }
+
+    .add-to-cart-btn {
+      display: block;
+      width: 150px;
+      height: 40px;
+      margin: 10px auto;
+      background-color: orange;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 16px;
+      margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="color: white;">Kalyan Restaurents</h1>
+
+    <div class="item">
+      <div class="item-details">
+        <img src="coffee.jfif" alt="Item 1">
+        <div class="item-name">Coffee</div>
+      </div>
+      <div class="price">₹100</div>
+      <div class="quantity">
+        <button class="minus-btn" data-name="Item 1">-</button>
+        <input type="number" class="quantity-input" value="0" min="0">
+        <button class="plus-btn" data-name="Item 1">+</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-details">
+        <img src="idly.webp" alt="Item 2">
+        <div class="item-name">Idly</div>
+      </div>
+      <div class="price">₹150</div>
+      <div class="quantity">
+        <button class="minus-btn" data-name="Item 2">-</button>
+        <input type="number" class="quantity-input" value="0" min="0">
+        <button class="plus-btn" data-name="Item 2">+</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-details">
+        <img src="meals.jpg" alt="Item 3">
+        <div class="item-name">Meals</div>
+      </div>
+      <div class="price">₹200</div>
+      <div class="quantity">
+        <button class="minus-btn" data-name="Item 3">-</button>
+        <input type="number" class="quantity-input" value="0" min="0">
+        <button class="plus-btn" data-name="Item 3">+</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-details">
+        <img src="Chicken Briyani.jpg" alt="Item 4">
+        <div class="item-name">Chicken Briyani</div>
+      </div>
+      <div class="price">₹250</div>
+      <div class="quantity">
+        <button class="minus-btn" data-name="Item 4">-</button>
+        <input type="number" class="quantity-input" value="0" min="0">
+        <button class="plus-btn" data-name="Item 4">+</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-details">
+        <img src="Prawn Fry.webp" alt="Item 5">
+        <div class="item-name">Prawn Fry</div>
+      </div>
+      <div class="price">₹300</div>
+      <div class="quantity">
+        <button class="minus-btn" data-name="Item 5">-</button>
+        <input type="number" class="quantity-input" value="0" min="0">
+        <button class="plus-btn" data-name="Item 5">+</button>
+      </div>
+    </div>
+
+    <button class="add-to-cart-btn">Add to Cart</button>
+
+    <div class="total" style="color: white;"></div>
+
+    <div class="error-message"></div>
+  </div>
+<script>
+
+// Get the buttons, quantity inputs, and the add to cart button
+var minusButtons = document.querySelectorAll('.minus-btn');
+var plusButtons = document.querySelectorAll('.plus-btn');
+var quantityInputs = document.querySelectorAll('.quantity-input');
+var addToCartButton = document.querySelector('.add-to-cart-btn');
+
+// Add event listeners to the minus buttons
+minusButtons.forEach(function (button) {
+  button.addEventListener('click', function () {
+    var input = button.nextElementSibling;
+    var currentValue = parseInt(input.value);
+    if (currentValue > 0) {
+      input.value = currentValue - 1;
+    }
+  });
+});
+
+// Add event listeners to the plus buttons
+plusButtons.forEach(function (button) {
+  button.addEventListener('click', function () {
+    var input = button.previousElementSibling;
+    input.value = parseInt(input.value) + 1;
+  });
+});
+
+// Add event listener to the add to cart button
+addToCartButton.addEventListener('click', function () {
+  var quantities = [];
+  var total = 0;
+  var errorMessage = '';
+
+  // Collect the quantities and calculate the total
+  quantityInputs.forEach(function (input) {
+    var quantity = parseInt(input.value);
+    quantities.push(quantity);
+    total += quantity * getItemPrice(input);
+  });
+
+  // Validate the quantities
+  if (total === 0) {
+    errorMessage = 'Please select at least one item.';
+  }
+
+  // Display the total and error message
+  var totalElement = document.querySelector('.total');
+  var errorElement = document.querySelector('.error-message');
+  totalElement.textContent = 'Total: ₹' + total;
+  errorElement.textContent = errorMessage;
+});
+
+// Helper function to get the price of an item
+function getItemPrice(input) {
+  var itemContainer = input.closest('.item');
+  var priceElement = itemContainer.querySelector('.price');
+  var price = parseInt(priceElement.textContent.slice(1)); // Remove the currency symbol and parse the price
+  return price;
+}
+</script>
+</body>
+</html>
