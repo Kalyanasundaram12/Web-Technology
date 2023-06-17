@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalyan Insurance Company</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #7a00cc, #000);
+      }
+      
+      .container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+      }
+      
+      h1 {
+        text-align: center;
+        color: #000;
+      }
+      
+      form {
+        margin-top: 30px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #000;
+      }
+      
+      input[type="text"],
+      input[type="date"],
+      input[type="email"],
+      input[type="password"] {
+        width: 95%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        background-color: grey;
+        color: #000;
+      }
+      
+      input[type="text"]::placeholder,
+      input[type="date"]::placeholder,
+      input[type="email"]::placeholder,
+      input[type="password"]::placeholder {
+        color: black;
+      }
+      
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #7a00cc;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #5e0099;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Insurance Company XYZ</h1>
+      <form name="clientForm" action="database.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required placeholder="Enter your name" /><br /><br />
+        <label for="address">Address:</label>
+        <input type="text" name="address" required placeholder="Enter your address" /><br /><br />
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" required placeholder="Select your date of birth" /><br /><br />
+        <label for="mobile">Mobile number:</label>
+        <input type="text" name="mobile" required placeholder="Enter your mobile number" /><br /><br />
+        <label for="email">Email ID:</label>
+        <input type="email" name="email" required placeholder="Enter your email address" /><br /><br />
+        <label for="username">Username:</label>
+        <input type="text" name="username" required placeholder="Choose a username" /><br /><br />
+        <label for="password">Password:</label>
+        <input type="password" name="password" required placeholder="Enter your password" /><br /><br />
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </body>
+</html>
