@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <style>
+      body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.quiz-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"],
+button {
+  padding: 10px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: #45a049;
+}
+
+#questions {
+  margin-top: 20px;
+}
+
+.question {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.question label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.question input[type="text"],
+.question select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.question button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.question button:hover {
+  background-color: #45a049;
+}
+
+/* Additional Styles */
+
+.quiz-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quiz-description {
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #888;
+}
+
+.question-number {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.choices-container {
+  margin-left: 20px;
+}
+
+.choice {
+  margin-bottom: 10px;
+}
+
+.choice label {
+  display: inline;
+  margin-right: 10px;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.submit-button {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Styling for quiz header */
+
+.quiz-header {
+  background-color: #4CAF50;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.quiz-header h1 {
+  color: white;
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+.quiz-header p {
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz Application</h1>
+        <form action="register.php" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <input type="submit" value="Register">
+        </form>
+
+        <!-- Quiz Creation Form (for admins) -->
+        <form action="create_quiz.php" method="POST">
+            <label for="title">Quiz Title:</label>
+            <input type="text" name="title" required>
+            <label for="description">Quiz Description:</label>
+            <textarea name="description" required></textarea>
+
+            <h3>Questions:</h3>
+            <div id="questions">
+                <div class="question">
+                    <label for="question[]">Question:</label>
+                    <input type="text" name="question[]" required>
+                    <label for="choice[][1]">Choice 1:</label>
+                    <input type="text" name="choice[][1]" required>
+                    <label for="choice[][2]">Choice 2:</label>
+                    <input type="text" name="choice[][2]" required>
+                    <label for="choice[][3]">Choice 3:</label>
+                    <input type="text" name="choice[][3]" required>
+                    <label for="choice[][4]">Choice 4:</label>
+                    <input type="text" name="choice[][4]" required>
+                    <label for="correct_choice[]">Correct Choice:</label>
+                    <select name="correct_choice[]">
+                        <option value="1">Choice 1</option>
+                        <option value="2">Choice 2</option>
+                        <option value="3">Choice 3</option>
+                        <option value="4">Choice 4</option>
+                    </select>
+                </div>
+            </div>
+            <script src="script.js"></script>
+            <button type="button" onclick="addQuestion()">Add Question</button>
+            <input type="submit" value="Create Quiz">
+        </form>
+    </div>
+</body>
+</html>
